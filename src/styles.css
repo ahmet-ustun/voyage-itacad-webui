@@ -9,3 +9,7 @@
     background-size      : cover;
     margin               : 24px;
 }
+
+body {
+    overflow-x: hidden;
+}
