@@ -16,9 +16,7 @@ interface Item {
 	]
 })
 export class AppComponent {
-<<<<<<< HEAD
- 
-=======
+
 	title = 'voyage';
->>>>>>> 4a727d7378ee799b7b689c07540cb7b8a88edde7
+
 }

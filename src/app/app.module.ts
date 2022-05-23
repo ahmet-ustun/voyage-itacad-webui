@@ -33,12 +33,8 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
   ],
   imports: [
     BrowserModule,
-<<<<<<< HEAD
-    AppRoutingModule,
-=======
     BrowserAnimationsModule,
     AppRoutingModule
->>>>>>> 4a727d7378ee799b7b689c07540cb7b8a88edde7
   ],
   providers: [],
   bootstrap: [AppComponent]
