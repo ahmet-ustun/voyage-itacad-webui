@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './modules/app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -32,7 +33,12 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
   ],
   imports: [
     BrowserModule,
+<<<<<<< HEAD
     AppRoutingModule,
+=======
+    BrowserAnimationsModule,
+    AppRoutingModule
+>>>>>>> 4a727d7378ee799b7b689c07540cb7b8a88edde7
   ],
   providers: [],
   bootstrap: [AppComponent]
