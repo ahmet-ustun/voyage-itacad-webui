@@ -101,6 +101,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "voyage:build:production",
+            "firebaseProject": "angular-gaming",
+            "firebaseHostingSite": "angular-gaming"
+          }
         }
       }
     }

@@ -14,6 +14,9 @@ import { GamingComponent } from './components/dynamic/gaming/gaming.component';
 import { ProfileComponent } from './components/dynamic/profile/profile.component';
 import { NotFoundComponent } from './components/dynamic/not-found/not-found.component';
 
+import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +32,7 @@ import { NotFoundComponent } from './components/dynamic/not-found/not-found.comp
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
