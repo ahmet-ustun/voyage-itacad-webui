@@ -16,8 +16,8 @@ import { GamingCardComponent } from './components/dynamic/gaming-card/gaming-car
 import { ProfileComponent } from './components/dynamic/profile/profile.component';
 import { NotFoundComponent } from './components/dynamic/not-found/not-found.component';
 
-import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
-import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+// import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
+// import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 
 @NgModule({
 	declarations: [
