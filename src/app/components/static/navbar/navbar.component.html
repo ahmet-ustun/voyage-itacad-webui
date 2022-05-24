@@ -24,8 +24,11 @@
                 </li>
             </ul>
         </div>
-        <a class="btn btn-ghost normal-case text-xl" routerLink = "/home">
-            Voyage
+        <a class="btn btn-ghost normal-case text-xl flex-nowrap px-10" routerLink = "/home">
+            <img src="../../../../assets/icons/orrery.svg" alt="Logo">
+            <span>
+                Voyage
+            </span>
         </a>
     </div>
     <div class="navbar-center hidden lg:flex">
@@ -48,27 +51,31 @@
         </ul>
     </div>
     <div class="navbar-end">
-        <div class="dropdown dropdown-end">
-            <label tabindex="0" class="btn btn-ghost btn-circle avatar">
-                <div class="w-10 rounded-full">
-                    <img src="https://api.lorem.space/image/face?hash=33791" />
-                </div>
-            </label>
-            <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                <li>
-                    <a class="justify-between" routerLink = "/profile" routerLinkActive= "active">
-                        Profile
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        Logout
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <a class="btn">
-            Login
-        </a>
+        <ng-template [ngIf]="authFirebase.user | async" [ngIfElse]="loginButton">
+            <div class="dropdown dropdown-end">
+                <label tabindex="0" class="btn btn-ghost btn-circle avatar">
+                    <div class="w-10 rounded-full">
+                        <img src="https://api.lorem.space/image/face?hash=33791" />
+                    </div>
+                </label>
+                <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                    <li>
+                        <a class="justify-between" routerLink = "/profile" routerLinkActive= "active">
+                            Profile
+                        </a>
+                    </li>
+                    <li>
+                        <a (click)="logout()">
+                            Logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </ng-template>
+        <ng-template #loginButton>
+            <a class="btn" (click)="login()">
+                Login
+            </a>
+        </ng-template>
     </div>
 </div>
