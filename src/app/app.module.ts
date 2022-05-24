@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 
 import { NavbarComponent } from './components/static/navbar/navbar.component';
 import { FooterComponent } from './components/static/footer/footer.component';
-import { RadioComponent } from './components/static/radio/radio.component';
 
 import { HomeComponent } from './components/dynamic/home/home.component';
 import { ExploreComponent } from './components/dynamic/explore/explore.component';
@@ -29,7 +28,6 @@ import { NotFoundComponent } from './components/dynamic/not-found/not-found.comp
 		SpeciesComponent,
 		GamingComponent,
 		GamingCardComponent,
-		RadioComponent,
 		ProfileComponent,
 		NotFoundComponent
 	],
@@ -41,4 +39,5 @@ import { NotFoundComponent } from './components/dynamic/not-found/not-found.comp
 	providers: [],
 	bootstrap: [AppComponent]
 })
+
 export class AppModule { }

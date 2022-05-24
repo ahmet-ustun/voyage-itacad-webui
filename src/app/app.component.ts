@@ -11,6 +11,7 @@ import { slideInAnimation } from './modules/app.animation';
 		slideInAnimation
 	]
 })
+
 export class AppComponent {
 	title = 'voyage';
 }
