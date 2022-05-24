@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { slideInAnimation } from './app.animation';
 
+interface Item {
+  title: string,
+  genre:string
+};
 @Component({
 	selector: 'app-root',
 	templateUrl: './app.component.html',
@@ -12,5 +16,7 @@ import { slideInAnimation } from './app.animation';
 	]
 })
 export class AppComponent {
+
 	title = 'voyage';
+
 }

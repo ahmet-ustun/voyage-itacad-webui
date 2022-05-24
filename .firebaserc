@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "angular-gaming"
+  },
+  "targets": {
+    "angular-gaming": {
+      "hosting": {
+        "voyage": [
+          "angular-gaming"
+        ]
+      }
+    }
+  }
+}
