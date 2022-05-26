@@ -30,7 +30,7 @@ export class AuthService {
 	}
 
 	googleLogout() {
-		
+
 		this.authFirebase.signOut()
 			.then(() => {
 				this.router.navigate(['home']);
