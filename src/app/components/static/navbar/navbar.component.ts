@@ -14,8 +14,7 @@ export class NavbarComponent implements OnInit {
 		public authFirebase: AngularFireAuth
 	) { }
 
-	ngOnInit(): void {
-	}
+	ngOnInit(): void { }
 
 	login() {
 		this.authService.googleLogin();

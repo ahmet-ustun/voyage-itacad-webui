@@ -29,6 +29,7 @@
             <span>
                 Voyage
             </span>
+            <audio src="../../../../assets/sound/space.mp3" control autoplay loop></audio>
         </a>
     </div>
     <div class="navbar-center hidden lg:flex">
@@ -51,11 +52,11 @@
         </ul>
     </div>
     <div class="navbar-end">
-        <ng-template [ngIf]="authFirebase.user | async" [ngIfElse]="loginButton">
+        <ng-template [ngIf]="authFirebase.user" [ngIfElse]="loginButton">
             <div class="dropdown dropdown-end">
                 <label tabindex="0" class="btn btn-ghost btn-circle avatar">
-                    <div class="w-10 rounded-full">
-                        <img src="https://api.lorem.space/image/face?hash=33791" />
+                    <div class="w-10 rounded-full" *ngIf="authFirebase.user | async as user$">
+                        <img [src]="user$.photoURL" [alt]="user$.displayName" />
                     </div>
                 </label>
                 <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
