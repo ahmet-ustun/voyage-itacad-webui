@@ -7,6 +7,7 @@ import { SpeciesComponent } from '../components/dynamic/species/species.componen
 import { GamingComponent } from '../components/dynamic/gaming/gaming.component';
 import { ProfileComponent } from '../components/dynamic/profile/profile.component';
 import { NotFoundComponent } from '../components/dynamic/not-found/not-found.component';
+import { AuthGuard } from '../guards/auth/auth.guard';
 
 const routes: Routes = [
 	{
@@ -27,7 +28,8 @@ const routes: Routes = [
 	},
 	{
 		path: 'profile',
-		component: ProfileComponent
+		component: ProfileComponent,
+		canActivate: [AuthGuard]
 	},
 	{
 		path: '',
@@ -44,4 +46,5 @@ const routes: Routes = [
 	imports: [RouterModule.forRoot(routes)],
 	exports: [RouterModule]
 })
+
 export class AppRoutingModule { }

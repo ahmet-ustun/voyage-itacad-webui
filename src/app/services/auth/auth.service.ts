@@ -8,12 +8,22 @@ import { Router } from '@angular/router';
 })
 
 export class AuthService {
+
 	constructor(
 		public authFirebase: AngularFireAuth,
 		private router: Router
-	) {	}
+	) {
+		this.authFirebase.authState.subscribe(user => {
+			if (user) {
+				localStorage.setItem('user', JSON.stringify(user));
+			} else {
+				localStorage.setItem('user', 'null');
+			}
+		})
+	}
 
 	googleLogin() {
+		
 		const provider = new Firebase.auth.GoogleAuthProvider();
 
 		provider.setCustomParameters({
@@ -22,10 +32,9 @@ export class AuthService {
 
 		this.authFirebase.signInWithPopup(provider)
 			.then(() => {
-				this.router.navigate(['profile']);
+				console.log('You have logged in successfully.');
 			}).catch(error => {
-				alert(error.message);
-				this.router.navigate(['home']);
+				console.log(error.message);
 			});
 	}
 
@@ -33,10 +42,21 @@ export class AuthService {
 
 		this.authFirebase.signOut()
 			.then(() => {
-				this.router.navigate(['home']);
+				if (this.router.url === '/profile') {
+					this.router.navigate(['home']);
+				}
+				console.log('You have logged out successfully.');
 			}).catch(error => {
-				alert(error.message);
-				this.router.navigate(['home']);
+				console.log(error.message);
 			});
+	}
+
+	get isLoggedIn(): boolean {
+		
+		const user = JSON.parse(localStorage.getItem('user')!);
+
+		return user 
+			? true 
+			: false;
 	}
 }
