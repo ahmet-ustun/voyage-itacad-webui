@@ -9,12 +9,15 @@ import { Router } from '@angular/router';
 
 export class AuthService {
 
+	userData: any;
+
 	constructor(
 		public authFirebase: AngularFireAuth,
 		private router: Router
 	) {
 		this.authFirebase.authState.subscribe(user => {
 			if (user) {
+				this.userData = user;
 				localStorage.setItem('user', JSON.stringify(user));
 			} else {
 				localStorage.setItem('user', 'null');
@@ -23,7 +26,7 @@ export class AuthService {
 	}
 
 	googleLogin() {
-		
+
 		const provider = new Firebase.auth.GoogleAuthProvider();
 
 		provider.setCustomParameters({
@@ -52,11 +55,11 @@ export class AuthService {
 	}
 
 	get isLoggedIn(): boolean {
-		
+
 		const user = JSON.parse(localStorage.getItem('user')!);
 
-		return user 
-			? true 
+		return user
+			? true
 			: false;
 	}
 }

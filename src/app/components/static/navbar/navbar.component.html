@@ -66,11 +66,11 @@
         </ul>
     </div>
     <div class="navbar-end">
-        <ng-template [ngIf]="user$" [ngIfElse]="loginButton">
+        <ng-template [ngIf]="authService.userData" [ngIfElse]="loginButton">
             <div class="dropdown dropdown-end">
                 <label tabindex="0" class="btn btn-ghost btn-circle avatar">
-                    <div class="w-10 rounded-full" *ngIf="user$">
-                        <img [src]="user$.photoURL" [alt]="user$.displayName" />
+                    <div class="w-10 rounded-full" *ngIf="authService.userData as user">
+                        <img [src]="user.photoURL" [alt]="user.displayName" />
                     </div>
                 </label>
                 <ul tabindex="0"

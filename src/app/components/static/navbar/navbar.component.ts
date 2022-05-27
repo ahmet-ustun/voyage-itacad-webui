@@ -29,7 +29,7 @@ export class NavbarComponent implements OnInit {
 
 	activate() {
 		this.isPlaying = !this.isPlaying;
-
+		this.audioMusic.nativeElement.volume = 0.08;
 		this.isPlaying
 			? this.audioMusic.nativeElement.play()
 			: this.audioMusic.nativeElement.pause();
