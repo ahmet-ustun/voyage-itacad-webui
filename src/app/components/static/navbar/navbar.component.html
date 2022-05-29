@@ -66,10 +66,10 @@
         </ul>
     </div>
     <div class="navbar-end">
-        <ng-template [ngIf]="authService.userData" [ngIfElse]="loginButton">
-            <div class="dropdown dropdown-end">
+        <ng-template [ngIf]="authService.isLoggedIn" [ngIfElse]="loginButton">
+            <div class="dropdown dropdown-end" *ngIf="authService.userData as user; else loading">
                 <label tabindex="0" class="btn btn-ghost btn-circle avatar">
-                    <div class="w-10 rounded-full" *ngIf="authService.userData as user">
+                    <div class="w-10 rounded-full">
                         <img [src]="user.photoURL" [alt]="user.displayName" />
                     </div>
                 </label>
@@ -87,6 +87,12 @@
                     </li>
                 </ul>
             </div>
+            <ng-template #loading>
+                <div class="lds-ripple">
+                    <div></div>
+                    <div></div>
+                </div>
+            </ng-template>
         </ng-template>
         <ng-template #loginButton>
             <a class="btn" (click)="login()">
