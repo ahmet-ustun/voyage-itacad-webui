@@ -22,6 +22,7 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
 import { environment } from 'src/environments/environment';
 import { AuthService } from './services/auth/auth.service';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
 	declarations: [
@@ -39,6 +40,13 @@ import { AuthService } from './services/auth/auth.service';
 	imports: [
 		BrowserModule,
 		BrowserAnimationsModule,
+		ToastrModule.forRoot({
+			timeOut: 3000,
+			progressBar: true,
+			progressAnimation: 'increasing',
+			positionClass: 'toast-bottom-right',
+			newestOnTop: false
+		}),
 		AppRoutingModule,
 		AngularFireModule.initializeApp(environment.firebase),
 		AngularFirestoreModule,

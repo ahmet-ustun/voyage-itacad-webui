@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import Firebase from 'firebase/compat/app';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
 	providedIn: 'root'
@@ -13,7 +14,8 @@ export class AuthService {
 
 	constructor(
 		public authFirebase: AngularFireAuth,
-		private router: Router
+		private router: Router,
+		private toastr: ToastrService
 	) {
 		this.authFirebase.authState.subscribe(user => {
 			if (user) {
@@ -35,9 +37,9 @@ export class AuthService {
 
 		this.authFirebase.signInWithPopup(provider)
 			.then(() => {
-				console.log('You have logged in successfully.');
+				this.toastr.success('You have logged in successfully.');
 			}).catch(error => {
-				console.log(error.message);
+				this.toastr.error(error.message);
 			});
 	}
 
@@ -48,9 +50,9 @@ export class AuthService {
 				if (this.router.url === '/profile') {
 					this.router.navigate(['home']);
 				}
-				console.log('You have logged out successfully.');
+				this.toastr.success('You have logged out successfully.');
 			}).catch(error => {
-				console.log(error.message);
+				this.toastr.error(error.message);
 			});
 	}
 
