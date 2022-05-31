@@ -1,3 +1,37 @@
 <div class="mockup-window border-none bg-base-300 shadow-md shadow-indigo-500/40">
-    <p>profile works!</p>
+    <section class="flex flex-row gap-4 p-8 justify-center">
+        <div class="avatar">
+            <div class="w-32 rounded-xl">
+                <img [src]="userData.photoURL" [alt]="userData.displayName" />
+            </div>
+        </div>
+        <article class="flex flex-col gap-2 justify-center">
+            <div class="badge badge-lg">
+                <span class="text-xs md:text-base">
+                    Username: {{userData.displayName}}
+                </span>
+            </div>
+            <div class="badge badge-lg">
+                <span class="text-xs md:text-base">
+                    Email: {{userData.email}}
+                </span>
+            </div>
+            <div class="badge badge-lg">
+                <span class="text-xs md:text-base">
+                    Created at: {{userData.createdAt | date:'medium'}}
+                </span>
+            </div>
+            <div class="badge badge-lg">
+                <span class="text-xs md:text-base">
+                    Last login: {{userData.lastLoginAt | date:'medium'}}
+                </span>
+            </div>
+        </article>
+    </section>
+    <div class="divider mx-8 my-0"></div>
+    <section class="p-8">
+        <h2 class="text-2xl text-center">
+            Your Species:
+        </h2>
+    </section>
 </div>
