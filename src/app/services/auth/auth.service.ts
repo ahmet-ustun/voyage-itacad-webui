@@ -71,14 +71,7 @@ export class AuthService {
 			photoURL: user.photoURL
 		};
 
-		userRef.get().subscribe(data => {
-
-			if (!data.exists) {
-				userRef.set({ collection: [] });
-			}
-
-			userRef.set(userData, { merge: true });
-		});
+		userRef.set(userData, { merge: true });
 	}
 
 	get isLoggedIn(): boolean {

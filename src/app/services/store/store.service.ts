@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
+import { ISpecies } from 'src/app/interfaces/ispecies';
 
 @Injectable({
 	providedIn: 'root'
@@ -12,10 +13,20 @@ export class StoreService {
 	constructor(
 		private storeFirebase: AngularFirestore,
 	) {
-		this.speciesRef = storeFirebase.collection('species');
+		this.speciesRef = this.storeFirebase.collection('species');
 	}
 
-	getSpecies(speciesID: string) {
-		return this.speciesRef.doc(speciesID);
+	getSpecies(speciesId: string) {
+		return this.speciesRef.doc(speciesId);
+	}
+
+	createSpecies(speciesInfo: ISpecies) {
+		return this.speciesRef.add({ ...speciesInfo });
+	}
+
+	deleteSpecies(speciesId: string): any {
+		if(confirm('Do you want to delete this species?')) {
+			return this.speciesRef.doc(speciesId).delete();
+		}
 	}
 }

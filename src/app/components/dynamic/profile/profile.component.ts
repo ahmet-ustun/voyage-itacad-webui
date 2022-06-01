@@ -17,20 +17,20 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
 	constructor(
 		public authService: AuthService,
-		private storeService: StoreService,
+		public storeService: StoreService,
 		private toastr: ToastrService
 	) {
 		this.userData = JSON.parse(localStorage.getItem('user')!);
 	}
 
 	ngOnInit(): void {
-		this.subscription = this.storeService.speciesRef.valueChanges()
+		this.subscription = this.storeService.speciesRef.valueChanges({ idField: 'id' })
 			.pipe(
 				map(val => val.filter(el => el.recordedBy === this.userData.uid)))
 			.subscribe({
 				next: data => this.userSpecies = data,
 				error: error => this.toastr.error(error.message)
-			})
+			});
 	}
 
 	ngOnDestroy(): void {
