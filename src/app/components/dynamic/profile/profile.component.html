@@ -32,7 +32,7 @@
     <section class="p-8 min-h-[80vh]">
         <ng-template [ngIf]="userSpecies" [ngIfElse]="loading">
             <h2 class="text-lg md:text-xl text-center mb-4">
-                Your Species {{userSpecies.length}} out of 5
+                Your have {{userSpecies.length}} out of 5 species.
             </h2>
             <ng-template [ngIf]="userSpecies.length > 0" [ngIfElse]="noSpecies">
                 <div class="card card-side bg-base-100 shadow-xl mb-4 flex-col md:flex-row"
@@ -48,7 +48,9 @@
                             {{species.info}}
                         </p>
                         <div class="card-actions justify-end">
-                            <button class="btn btn-primary">Delete</button>
+                            <button class="btn btn-primary">
+                                Delete
+                            </button>
                         </div>
                     </div>
                 </div>
