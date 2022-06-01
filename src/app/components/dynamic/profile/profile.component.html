@@ -29,9 +29,63 @@
         </article>
     </section>
     <div class="divider mx-8 my-0"></div>
-    <section class="p-8">
-        <h2 class="text-xl text-center">
-            Your Species:
-        </h2>
+    <section class="p-8 min-h-[80vh]">
+        <ng-template [ngIf]="userSpecies" [ngIfElse]="loading">
+            <h2 class="text-lg md:text-xl text-center mb-4">
+                Your Species {{userSpecies.length}} out of 5
+            </h2>
+            <ng-template [ngIf]="userSpecies.length > 0" [ngIfElse]="noSpecies">
+                <div class="card card-side bg-base-100 shadow-xl mb-4 flex-col md:flex-row"
+                    *ngFor="let species of userSpecies">
+                    <figure>
+                        <img class="w-96 h-64" [src]="species.imageUrl" [alt]="species.name">
+                    </figure>
+                    <div class="card-body">
+                        <h2 class="card-title">
+                            {{species.name}}
+                        </h2>
+                        <p>
+                            {{species.info}}
+                        </p>
+                        <div class="card-actions justify-end">
+                            <button class="btn btn-primary">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+            <ng-template #noSpecies>
+                <div class="hero min-h-[70vh] rounded-lg"
+                    style="background-image: url(../../../../assets/images/not-found.jpg);">
+                    <div class="hero-overlay bg-opacity-60"></div>
+                    <div class="hero-content text-center text-neutral-content">
+                        <div class="max-w-md">
+                            <p class="mb-5">
+                                “Two possibilities exist: either we are alone in the Universe or we are not. Both are
+                                equally terrifying.”
+                                — Arthur C. Clarke
+                            </p>
+                            <a class="btn btn-primary" routerLink="../species">
+                                Let's Change This
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+        </ng-template>
+        <ng-template #loading>
+            <div class="h-[70vh] flex justify-center items-center">
+                <div class="lds-grid scale-150">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </ng-template>
     </section>
 </div>
