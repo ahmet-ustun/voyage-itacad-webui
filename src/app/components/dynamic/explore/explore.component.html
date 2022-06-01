@@ -1,15 +1,21 @@
 <div class="mockup-window border-none bg-base-300 shadow-md shadow-indigo-500/40">
-  <div class="grid grid-cols-3 ml-20 space-y-3.5">
-    <div class="card w-96 bg-base-100 shadow-xl" *ngFor="let planet of planetService.database">
-      <figure>
-        <img src="{{planet.imageUrl}}" alt="{{planet.name}}" width="100%" />
-      </figure>
-      <div class="card-body">
-        <h2 class="card-title">{{planet.name}}</h2>
-        <div class="card-actions justify-end">
-          <button class="btn btn-primary"><a routerLink = "/explore/{{planet.name | lowercase}}" routerLinkActive= "active">More info</a></button>
-        </div>
-      </div>
-    </div>  
-  </div>
+	<div class="grid grid-cols-3 ml-20 space-y-3.5">
+		<div class="card w-96 bg-base-100 shadow-xl" *ngFor="let planet of planetService.database">
+			<figure>
+				<img src="{{planet.imageUrl}}" alt="{{planet.name}}" width="100%" />
+			</figure>
+			<div class="card-body">
+				<h2 class="card-title">
+					{{planet.name}}
+				</h2>
+				<div class="card-actions justify-end">
+					<button class="btn btn-primary">
+						<a routerLink="/explore/{{planet.name | lowercase}}">
+							More Info
+						</a>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
