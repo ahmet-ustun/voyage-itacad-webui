@@ -1,12 +1,21 @@
 <div class="mockup-window border-none bg-base-300 shadow-md shadow-indigo-500/40">
-    <!-- <p>explore works!</p> -->
-    <div class="hero min-h-screen bg-base-200">
-        <div class="hero-content text-center">
-          <div class="max-w-md">
-            <h1 class="text-5xl font-bold">Hello there</h1>
-            <p class="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-            <button class="btn btn-primary">Get Started</button>
-          </div>
-        </div>
-      </div>
+	<div class="m-8 flex flex-wrap gap-6 justify-center">
+		<div class="card card-compact w-96 h-96 bg-base-100 shadow-xl" *ngFor="let planet of planetService.database">
+			<figure>
+				<img src="{{planet.imageUrl}}" alt="{{planet.name}}" width="100%" />
+			</figure>
+			<div class="card-body flex-row justify-between items-center">
+				<h2 class="card-title">
+					{{planet.name}}
+				</h2>
+				<div class="card-actions justify-end">
+					<button class="btn btn-primary">
+						<a routerLink="/explore/{{planet.name | lowercase}}">
+							More Info
+						</a>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

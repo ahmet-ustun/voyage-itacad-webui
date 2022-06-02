@@ -1,15 +1,39 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+import { map, Subscription } from 'rxjs';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { StoreService } from 'src/app/services/store/store.service';
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+	selector: 'app-profile',
+	templateUrl: './profile.component.html',
+	styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent implements OnInit, OnDestroy {
 
-  constructor() { }
+	userData: any;
+	userSpecies: any;
+	subscription!: Subscription;
 
-  ngOnInit(): void {
-  }
+	constructor(
+		public authService: AuthService,
+		public storeService: StoreService,
+		private toastr: ToastrService
+	) {
+		this.userData = JSON.parse(localStorage.getItem('user')!);
+	}
 
+	ngOnInit(): void {
+		this.subscription = this.storeService.speciesRef.valueChanges({ idField: 'id' })
+			.pipe(
+				map(val => val.filter(el => el.recordedBy === this.userData.uid)))
+			.subscribe({
+				next: data => this.userSpecies = data,
+				error: error => this.toastr.error(error.message)
+			});
+	}
+
+	ngOnDestroy(): void {
+		this.subscription.unsubscribe();
+	}
 }

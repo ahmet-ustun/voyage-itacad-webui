@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 import Firebase from 'firebase/compat/app';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { IUser } from 'src/app/interfaces/iuser';
 
 @Injectable({
 	providedIn: 'root'
@@ -13,7 +16,9 @@ export class AuthService {
 
 	constructor(
 		public authFirebase: AngularFireAuth,
-		private router: Router
+		public storeFirebase: AngularFirestore,
+		private router: Router,
+		private toastr: ToastrService
 	) {
 		this.authFirebase.authState.subscribe(user => {
 			if (user) {
@@ -34,10 +39,11 @@ export class AuthService {
 		});
 
 		this.authFirebase.signInWithPopup(provider)
-			.then(() => {
-				console.log('You have logged in successfully.');
+			.then((result) => {
+				this.toastr.success('You have logged in successfully.');
+				this.saveUser(result.user);
 			}).catch(error => {
-				console.log(error.message);
+				this.toastr.error(error.message);
 			});
 	}
 
@@ -48,10 +54,24 @@ export class AuthService {
 				if (this.router.url === '/profile') {
 					this.router.navigate(['home']);
 				}
-				console.log('You have logged out successfully.');
+				this.toastr.success('You have logged out successfully.');
 			}).catch(error => {
-				console.log(error.message);
+				this.toastr.error(error.message);
 			});
+	}
+
+	saveUser(user: any) {
+
+		const userRef: AngularFirestoreDocument<any> = this.storeFirebase.doc(`users/${user.uid}`);
+
+		const userData: IUser = {
+			uid: user.uid,
+			email: user.email,
+			displayName: user.displayName,
+			photoURL: user.photoURL
+		};
+
+		userRef.set(userData, { merge: true });
 	}
 
 	get isLoggedIn(): boolean {

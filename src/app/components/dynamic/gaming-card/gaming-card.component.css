@@ -5,6 +5,7 @@
   align-items: flex-start;
   justify-content: space-between;
   padding: 15px 8px;
+  color: black;
 }
 .mat-card-footer {
   display: block;
