@@ -1,32 +1,37 @@
 <div class="mockup-window border-none bg-base-300 shadow-md shadow-indigo-500/40">
     <section class="p-8 flex flex-row justify-between">
-        <!-- The button to open modal -->
-        <label for="my-modal-3" class="btn btn-primary modal-button">
-            Add Species
-        </label>
-
-        <!-- Put this part before </body> tag -->
-        <input type="checkbox" id="my-modal-3" class="modal-toggle" />
-        <div class="modal">
-            <div class="modal-box relative">
-                <label for="my-modal-3" class="btn btn-sm btn-circle absolute right-2 top-2">
-                    ✕
-                </label>
-                <h3 class="text-lg font-bold">
-                    Congratulations random Interner user!
-                </h3>
-                <p class="py-4">
-                    You've been selected for a chance to get one year of subscription to use Wikipedia for free!
-                </p>
+        <ng-template [ngIf]="authService.isLoggedIn" [ngIfElse]="placeholder">
+            <!-- The button to open modal -->
+            <label for="my-modal-3" class="btn btn-primary modal-button">
+                Add Species
+            </label>
+            <!-- Put this part before </body> tag -->
+            <input type="checkbox" id="my-modal-3" class="modal-toggle" />
+            <div class="modal">
+                <div class="modal-box relative">
+                    <label for="my-modal-3" class="btn btn-sm btn-circle absolute right-2 top-2">
+                        ✕
+                    </label>
+                    <h3 class="text-lg font-bold">
+                        Congratulations random Interner user!
+                    </h3>
+                    <p class="py-4">
+                        You've been selected for a chance to get one year of subscription to use Wikipedia for free!
+                    </p>
+                </div>
             </div>
-        </div>
-
+        </ng-template>
+        <ng-template #placeholder>
+            <div class="h-[50px]"></div>
+        </ng-template>
         <div class="form-control">
             <div class="input-group">
-                <input type="text" placeholder="Search…" class="input input-bordered" />
+                <input type="text" placeholder="Search…" class="input input-bordered" [(ngModel)]="searchKey" />
                 <button class="btn btn-square disabled:bg-[#474d57]" disabled>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="#99ADBA">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="#99ADBA">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                     </svg>
                 </button>
             </div>
@@ -35,8 +40,9 @@
     <div class="divider mx-8 my-0"></div>
     <section class="p-8 min-h-[90vh] flex flex-wrap gap-6 justify-center">
         <ng-template [ngIf]="allSpecies" [ngIfElse]="loading">
-            <ng-template [ngIf]="allSpecies.length > 0" [ngIfElse]="noSpecies">
-                <div class="card card-compact w-96 h-80 bg-base-100 shadow-xl" *ngFor="let species of allSpecies">
+            <ng-template [ngIf]="(allSpecies | filter:searchKey).length > 0" [ngIfElse]="noSpecies">
+                <div class="card card-compact w-96 h-80 bg-base-100 shadow-xl"
+                    *ngFor="let species of allSpecies | filter:searchKey">
                     <figure class="h-64 overflow-hidden">
                         <img class="w-96" [src]="species.imageUrl" [alt]="species.name">
                     </figure>

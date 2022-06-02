@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { Subscription } from 'rxjs';
+import { map, Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { StoreService } from 'src/app/services/store/store.service';
 
@@ -14,6 +14,7 @@ export class SpeciesComponent implements OnInit, OnDestroy {
 	userData: any;
 	allSpecies: any;
 	subscription!: Subscription;
+	searchKey: string = '';
 
 	constructor(
 		public authService: AuthService,
@@ -21,10 +22,13 @@ export class SpeciesComponent implements OnInit, OnDestroy {
 		private toastr: ToastrService
 	) {
 		this.userData = JSON.parse(localStorage.getItem('user')!);
+		console.log(this.searchKey);
 	}
 
 	ngOnInit(): void {
 		this.subscription = this.storeService.speciesRef.valueChanges({ idField: 'id' })
+			.pipe(
+				map(val => val.filter(el => el.name.includes(this.searchKey))))
 			.subscribe({
 				next: data => this.allSpecies = data,
 				error: error => this.toastr.error(error.message)

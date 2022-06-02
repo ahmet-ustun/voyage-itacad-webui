@@ -24,6 +24,8 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { environment } from 'src/environments/environment';
 import { AuthService } from './services/auth/auth.service';
 import { ToastrModule } from 'ngx-toastr';
+import { FormsModule } from '@angular/forms';
+import { FilterPipe } from './pipes/filter/filter.pipe';
 
 @NgModule({
 	declarations: [
@@ -37,6 +39,7 @@ import { ToastrModule } from 'ngx-toastr';
 		GamingCardComponent,
 		ProfileComponent,
 		NotFoundComponent,
+  FilterPipe,
 	],
 	imports: [
 		BrowserModule,
@@ -54,6 +57,7 @@ import { ToastrModule } from 'ngx-toastr';
 		AngularFireAuthModule,
 		AngularFireStorageModule,
 		MatCardModule,
+		FormsModule
 	],
 	providers: [
 		AuthService
