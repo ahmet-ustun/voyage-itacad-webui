@@ -1,34 +1,24 @@
-<div class="flex flex-wrap mt-8 mb-8 ml-20 mr-20 place-content-between">
-  <mat-card
-    class="mt-8 game-card bg-[#BDC3CF]"
-    *ngFor="let game of gamesArrayCollection"
-  >
-    <mat-card-header>
-      <div
-        mat-card-avatar
-        class="bg-cover"
-        style="
-          background-image: url('{{ game.avatarImgUrl }}');
-        "
-      ></div>
-      <mat-card-title class="text-lg font-medium text-black">{{
-        game.title
-      }}</mat-card-title>
-      <mat-card-subtitle class="text-[#4d525b]">{{
-        game.genre
-      }}</mat-card-subtitle>
-    </mat-card-header>
-    <div>
-      <img mat-card-image src="{{ game.gameImgUrl }}" alt="Photo of the game" />
-    </div>
-
-    <mat-card-content class="text-black">
-      <p>
-        {{ game.description }}
-      </p>
-    </mat-card-content>
-    <mat-card-footer class="self-end m-0 text-[#4d525b]"
-      >Release date: {{ game.releaseDate }}
-    </mat-card-footer>
-  </mat-card>
+<div class="m-8 flex flex-wrap gap-6 justify-center">
+	<mat-card class="game-card bg-[#2A303C]" *ngFor="let game of gamesArrayCollection">
+		<mat-card-header>
+			<div mat-card-avatar class="bg-cover" style="background-image: url('{{ game.avatarImgUrl }}');"></div>
+			<mat-card-title class="text-lg font-medium text-[#A6ADBA]">
+				{{game.title}}
+			</mat-card-title>
+			<mat-card-subtitle class="text-white">
+				{{game.genre}}
+			</mat-card-subtitle>
+		</mat-card-header>
+		<div>
+			<img mat-card-image src="{{ game.gameImgUrl }}" alt="Photo of the game" />
+		</div>
+		<mat-card-content class="text-[#A6ADBA]">
+			<p>
+				{{game.description}}
+			</p>
+		</mat-card-content>
+		<mat-card-footer class="self-end m-0 text-white">
+			Release date: {{ game.releaseDate }}
+		</mat-card-footer>
+	</mat-card>
 </div>

@@ -1,25 +1,26 @@
 .game-card {
-  max-width: 400px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
-  padding: 15px 8px;
-  color: #4f4242;
+	max-width      : 400px;
+	display        : flex;
+	flex-direction : column;
+	align-items    : flex-start;
+	justify-content: space-between;
+	padding        : 15px 8px;
 }
+
 .mat-card-footer {
-  display: block;
-  margin: 0;
+	display: block;
+	margin : 0;
 }
+
 .mat-card-image {
-  margin: 10px 0;
-  display: block;
-  width: 100%;
-  overflow: hidden;
+	margin  : 10px 0;
+	display : block;
+	width   : 100%;
+	overflow: hidden;
 }
 
 .mat-card-image:first-child {
-  margin-top: 0;
-  border-top-left-radius: inherit;
-  border-top-right-radius: inherit;
+	margin-top             : 0;
+	border-top-left-radius : inherit;
+	border-top-right-radius: inherit;
 }

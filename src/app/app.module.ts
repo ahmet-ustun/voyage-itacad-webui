@@ -26,36 +26,41 @@ import { AuthService } from './services/auth/auth.service';
 import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavbarComponent,
-    FooterComponent,
-    HomeComponent,
-    ExploreComponent,
-    SpeciesComponent,
-    GamingComponent,
-    GamingCardComponent,
-    ProfileComponent,
-    NotFoundComponent,
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    ToastrModule.forRoot({
-      timeOut: 3000,
-      progressBar: true,
-      progressAnimation: 'increasing',
-      positionClass: 'toast-bottom-right',
-      newestOnTop: false,
-    }),
-    AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule,
-    AngularFireAuthModule,
-    AngularFireStorageModule,
-    MatCardModule,
-  ],
-  providers: [AuthService],
-  bootstrap: [AppComponent],
+	declarations: [
+		AppComponent,
+		NavbarComponent,
+		FooterComponent,
+		HomeComponent,
+		ExploreComponent,
+		SpeciesComponent,
+		GamingComponent,
+		GamingCardComponent,
+		ProfileComponent,
+		NotFoundComponent,
+	],
+	imports: [
+		BrowserModule,
+		BrowserAnimationsModule,
+		ToastrModule.forRoot({
+			timeOut: 3000,
+			progressBar: true,
+			progressAnimation: 'increasing',
+			positionClass: 'toast-bottom-right',
+			newestOnTop: false,
+		}),
+		AppRoutingModule,
+		AngularFireModule.initializeApp(environment.firebase),
+		AngularFirestoreModule,
+		AngularFireAuthModule,
+		AngularFireStorageModule,
+		MatCardModule,
+	],
+	providers: [
+		AuthService
+	],
+	bootstrap: [
+		AppComponent
+	],
 })
-export class AppModule {}
+
+export class AppModule { }
