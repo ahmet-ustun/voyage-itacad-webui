@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './modules/app-routing.module';
 import { AppComponent } from './app.component';
+import { MatCardModule } from '@angular/material/card';
 
 import { NavbarComponent } from './components/static/navbar/navbar.component';
 import { FooterComponent } from './components/static/footer/footer.component';
@@ -22,35 +23,37 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
 import { environment } from 'src/environments/environment';
 import { AuthService } from './services/auth/auth.service';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 
 @NgModule({
-	declarations: [
-		AppComponent,
-		NavbarComponent,
-		FooterComponent,
-		HomeComponent,
-		ExploreComponent,
-		SpeciesComponent,
-		GamingComponent,
-		GamingCardComponent,
-		ProfileComponent,
-		NotFoundComponent
-	],
-	imports: [
-		BrowserModule,
-		BrowserAnimationsModule,
-		AppRoutingModule,
-		AngularFireModule.initializeApp(environment.firebase),
-		AngularFirestoreModule,
-		AngularFireAuthModule,
-		AngularFireStorageModule
-	],
-	providers: [
-		AuthService
-	],
-	bootstrap: [
-		AppComponent
-	]
+  declarations: [
+    AppComponent,
+    NavbarComponent,
+    FooterComponent,
+    HomeComponent,
+    ExploreComponent,
+    SpeciesComponent,
+    GamingComponent,
+    GamingCardComponent,
+    ProfileComponent,
+    NotFoundComponent,
+  ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    AngularFireStorageModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
+    MatCardModule,
+  ],
+  providers: [AuthService],
+  bootstrap: [AppComponent],
 })
-
-export class AppModule { }
+export class AppModule {}

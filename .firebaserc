@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "voyage-0": {
+      "hosting": {
+        "voyage": [
+          "voyage-0"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "voyage-0"
+  }
+}
