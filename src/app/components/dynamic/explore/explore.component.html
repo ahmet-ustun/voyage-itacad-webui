@@ -1,7 +1,8 @@
 <div class="flex flex-row justify-center flex-wrap-reverse xl:flex-nowrap ">
 	<div class="mockup-window border-none bg-base-300 shadow-md shadow-indigo-500/40 flex-grow">
 		<div class="p-8 flex flex-wrap gap-6 justify-center">
-			<div class="card card-compact w-96 h-96 bg-base-100 shadow-xl" *ngFor="let planet of planetService.database">
+			<div class="card card-compact w-96 h-96 bg-base-100 shadow-xl"
+				*ngFor="let planet of planetService.database">
 				<figure>
 					<img src="{{planet.imageUrl}}" alt="{{planet.name}}" width="100%" />
 				</figure>
@@ -10,11 +11,9 @@
 						{{planet.name}}
 					</h2>
 					<div class="card-actions justify-end">
-						<button class="btn btn-primary">
-							<a routerLink="/explore/{{planet.name | lowercase}}">
-								More Info
-							</a>
-						</button>
+						<a class="btn btn-primary" routerLink="/explore/{{planet.name | lowercase}}">
+							More Info
+						</a>
 					</div>
 				</div>
 			</div>
