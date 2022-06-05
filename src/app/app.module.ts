@@ -13,6 +13,7 @@ import { ExploreComponent } from './components/dynamic/explore/explore.component
 import { SpeciesComponent } from './components/dynamic/species/species.component';
 import { GamingComponent } from './components/dynamic/gaming/gaming.component';
 import { GamingCardComponent } from './components/dynamic/gaming-card/gaming-card.component';
+import { GamingChildComponent } from './components/dynamic/gaming-child/gaming-child.component';
 import { ProfileComponent } from './components/dynamic/profile/profile.component';
 import { NotFoundComponent } from './components/dynamic/not-found/not-found.component';
 
@@ -26,6 +27,8 @@ import { AuthService } from './services/auth/auth.service';
 import { ToastrModule } from 'ngx-toastr';
 import { FormsModule } from '@angular/forms';
 import { FilterPipe } from './pipes/filter/filter.pipe';
+import { ExploreChildComponent } from './components/dynamic/explore-child/explore-child.component';
+import { SpeciesChildComponent } from './components/dynamic/species-child/species-child.component';
 
 @NgModule({
 	declarations: [
@@ -39,7 +42,10 @@ import { FilterPipe } from './pipes/filter/filter.pipe';
 		GamingCardComponent,
 		ProfileComponent,
 		NotFoundComponent,
-  FilterPipe,
+		GamingChildComponent,
+		FilterPipe,
+  ExploreChildComponent,
+  SpeciesChildComponent,
 	],
 	imports: [
 		BrowserModule,

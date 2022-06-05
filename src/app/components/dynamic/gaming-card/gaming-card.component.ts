@@ -16,7 +16,9 @@ export class GamingCardComponent implements OnInit {
 		await this.gameService.gamesCollection
 			.then(response => {
 				response.docs.map(doc => {
-					this.gamesArrayCollection.push(doc.data());
+					this.gamesArrayCollection.push({
+						...doc.data(), id: doc.id
+					});
 				});
 			}).catch(error => {
 				this.toastr.error(error.message);
