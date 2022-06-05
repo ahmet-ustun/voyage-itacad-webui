@@ -1,8 +1,9 @@
-<router-outlet></router-outlet>
-
-<div class="border-none shadow-md mockup-window bg-base-300 shadow-indigo-500/40">
-	<h1 class="text-lg md:text-xl text-center mb-4">
-		Our favourite space-exploration games!
-	</h1>
-	<app-gaming-card></app-gaming-card>
+<div class="flex flex-row justify-center flex-wrap-reverse xl:flex-nowrap ">
+	<div class="mockup-window border-none bg-base-300 shadow-md shadow-indigo-500/40 flex-grow">
+		<h1 class="text-lg md:text-xl text-center mb-4">
+			Our favourite space-exploration games!
+		</h1>
+		<app-gaming-card></app-gaming-card>
+	</div>
+	<router-outlet></router-outlet>
 </div>

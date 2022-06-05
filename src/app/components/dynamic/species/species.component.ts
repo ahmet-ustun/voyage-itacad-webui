@@ -19,10 +19,9 @@ export class SpeciesComponent implements OnInit, OnDestroy {
 	constructor(
 		public authService: AuthService,
 		public storeService: StoreService,
-		private toastr: ToastrService
+		private toastr: ToastrService,
 	) {
 		this.userData = JSON.parse(localStorage.getItem('user')!);
-		console.log(this.searchKey);
 	}
 
 	ngOnInit(): void {
