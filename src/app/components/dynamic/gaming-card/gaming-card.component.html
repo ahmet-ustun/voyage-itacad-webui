@@ -1,41 +1,52 @@
-<div class="m-8 flex flex-wrap gap-6 justify-center">
-	<ng-template [ngIf]="gamesArrayCollection.length" [ngIfElse]="loading">
-		<mat-card class="game-card bg-[#2A303C]" *ngFor="let game of gamesArrayCollection">
-			<mat-card-header>
-				<div mat-card-avatar class="bg-cover" style="background-image: url('{{game.avatarImgUrl}}');"></div>
-				<mat-card-title class="text-lg font-medium text-[#A6ADBA]">
-					{{game.title}}
-				</mat-card-title>
-				<mat-card-subtitle class="text-white">
-					{{game.genre}}
-				</mat-card-subtitle>
-			</mat-card-header>
-			<a routerLink="./{{game.id}}">
-				<div>
-					<img mat-card-image src="{{game.gameImgUrl}}" alt="{{game.title}}" />
-				</div>
-			</a>
-			<mat-card-content class="text-[#A6ADBA]">
-				<p>
-					{{game.description}}
-				</p>
-			</mat-card-content>
-			<mat-card-footer class="self-end m-0 text-white">
-				Release date: {{game.releaseDate}}
-			</mat-card-footer>
-		</mat-card>
-	</ng-template>
-	<ng-template #loading>
-		<div class="lds-grid my-[36vh] scale-150">
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-		</div>
-	</ng-template>
+<div class="flex flex-wrap justify-center gap-6 m-8">
+  <ng-template [ngIf]="gamesArrayCollection.length" [ngIfElse]="loading">
+    <mat-card
+      class="game-card bg-[#2A303C]"
+      *ngFor="let game of gamesArrayCollection"
+    >
+      <mat-card-header>
+        <div
+          mat-card-avatar
+          class="bg-cover"
+          style="background-image: url('{{ game.avatarImgUrl }}');"
+        ></div>
+        <mat-card-title class="text-lg font-medium text-[#A6ADBA]">
+          {{ game.title }}
+        </mat-card-title>
+        <mat-card-subtitle class="text-[#edece8] indent-0.5">
+          {{ game.genre }}
+        </mat-card-subtitle>
+      </mat-card-header>
+      <a routerLink="./{{ game.id }}">
+        <div>
+          <img
+            mat-card-image
+            src="{{ game.gameImgUrl }}"
+            alt="{{ game.title }}"
+          />
+        </div>
+      </a>
+      <mat-card-content class="text-[#A6ADBA]">
+        <p>
+          {{ game.description }}
+        </p>
+      </mat-card-content>
+      <mat-card-footer class="self-end m-0 text-[#edece8]">
+        Release date: {{ game.releaseDate }}
+      </mat-card-footer>
+    </mat-card>
+  </ng-template>
+  <ng-template #loading>
+    <div class="lds-grid my-[36vh] scale-150">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </ng-template>
 </div>
