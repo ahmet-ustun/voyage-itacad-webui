@@ -1,7 +1,7 @@
 <div class="flex flex-row justify-center flex-wrap-reverse xl:flex-nowrap ">
-	<div class="mockup-window border-none bg-base-300 shadow-md shadow-indigo-500/40 flex-grow">
+    <div class="mockup-window border-none bg-base-300 shadow-md shadow-indigo-500/40 flex-grow">
         <section class="p-8 flex flex-row justify-between">
-            <ng-template [ngIf]="authService.isLoggedIn" [ngIfElse]="placeholder">
+            <ng-template [ngIf]="authService.isLoggedIn && storeService.userSpecies && storeService.isExceeding" [ngIfElse]="placeholder">
                 <!-- The button to open modal -->
                 <label for="my-modal-3" class="btn btn-primary modal-button">
                     Add Species
@@ -13,12 +13,12 @@
                         <label for="my-modal-3" class="btn btn-sm btn-circle absolute right-2 top-2">
                             ✕
                         </label>
-                        <h3 class="text-lg font-bold">
-                            Congratulations random Interner user!
-                        </h3>
-                        <p class="py-4">
-                            You've been selected for a chance to get one year of subscription to use Wikipedia for free!
-                        </p>
+                        <div class="form-control gap-4">
+                            <input type="text" placeholder="Name" class="input input-bordered" />
+                            <textarea placeholder="Info" class="textarea textarea-bordered h-56"></textarea>
+                            <input type="file" accept="image/png, image/jpeg">
+                            <button class="btn btn-primary">Add</button>
+                        </div>
                     </div>
                 </div>
             </ng-template>
@@ -61,12 +61,13 @@
                 </ng-template>
                 <ng-template #noSpecies>
                     <div class="hero min-h-[80vh] rounded-lg"
-                    style="background-image: url(../../../../assets/images/not-found.jpg);">
+                        style="background-image: url(../../../../assets/images/not-found.jpg);">
                         <div class="hero-overlay bg-opacity-60"></div>
                         <div class="hero-content text-center text-neutral-content">
                             <div class="max-w-md">
                                 <p class="mb-5">
-                                    “Two possibilities exist: either we are alone in the Universe or we are not. Both are
+                                    “Two possibilities exist: either we are alone in the Universe or we are not. Both
+                                    are
                                     equally terrifying.”
                                     — Arthur C. Clarke
                                 </p>

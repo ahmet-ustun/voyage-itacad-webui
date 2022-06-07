@@ -9,6 +9,7 @@ import { StoreService } from 'src/app/services/store/store.service';
 	templateUrl: './species.component.html',
 	styleUrls: ['./species.component.css']
 })
+
 export class SpeciesComponent implements OnInit, OnDestroy {
 
 	userData: any;

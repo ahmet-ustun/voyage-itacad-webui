@@ -2,7 +2,7 @@
     <section class="flex flex-row gap-4 p-8 justify-center">
         <div class="avatar">
             <div class="w-32 rounded-xl">
-                <img [src]="userData.photoURL" [alt]="userData.displayName" />
+                <img [src]="userData.photoURL" [alt]="userData.displayName" referrerpolicy="no-referrer" />
             </div>
         </div>
         <article class="flex flex-col gap-2 justify-center">
@@ -30,13 +30,13 @@
     </section>
     <div class="divider mx-8 my-0"></div>
     <section class="p-8 min-h-[80vh]">
-        <ng-template [ngIf]="userSpecies" [ngIfElse]="loading">
+        <ng-template [ngIf]="storeService.userSpecies" [ngIfElse]="loading">
             <h2 class="text-lg md:text-xl text-center mb-4">
-                Your have {{userSpecies.length}} out of 5 species.
+                Your have {{storeService.userSpecies.length}} out of 5 species.
             </h2>
-            <ng-template [ngIf]="userSpecies.length > 0" [ngIfElse]="noSpecies">
+            <ng-template [ngIf]="storeService.userSpecies.length > 0" [ngIfElse]="noSpecies">
                 <div class="card card-side bg-base-100 shadow-xl mb-4 flex-col md:flex-row"
-                    *ngFor="let species of userSpecies">
+                    *ngFor="let species of storeService.userSpecies">
                     <figure>
                         <img class="w-96 h-64" [src]="species.imageUrl" [alt]="species.name">
                     </figure>

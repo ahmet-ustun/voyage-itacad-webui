@@ -70,7 +70,7 @@
             <div class="dropdown dropdown-end" *ngIf="authService.userData as user; else loading">
                 <label tabindex="0" class="btn btn-ghost btn-circle avatar">
                     <div class="w-10 rounded-full">
-                        <img [src]="user.photoURL" [alt]="user.displayName" />
+                        <img [src]="user.photoURL" [alt]="user.displayName" referrerpolicy="no-referrer" />
                     </div>
                 </label>
                 <ul tabindex="0"

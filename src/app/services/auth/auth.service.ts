@@ -12,6 +12,7 @@ import { IUser } from 'src/app/interfaces/iuser';
 
 export class AuthService {
 
+	userDataG: any;
 	userData: any;
 
 	constructor(
@@ -22,12 +23,13 @@ export class AuthService {
 	) {
 		this.authFirebase.authState.subscribe(user => {
 			if (user) {
-				this.userData = user;
+				this.userDataG = user;
 				localStorage.setItem('user', JSON.stringify(user));
 			} else {
 				localStorage.setItem('user', 'null');
 			}
 		})
+		this.userData = JSON.parse(localStorage.getItem('user')!);
 	}
 
 	googleLogin() {
@@ -64,14 +66,14 @@ export class AuthService {
 
 		const userRef: AngularFirestoreDocument<any> = this.storeFirebase.doc(`users/${user.uid}`);
 
-		const userData: IUser = {
+		const userDataG: IUser = {
 			uid: user.uid,
 			email: user.email,
 			displayName: user.displayName,
 			photoURL: user.photoURL
 		};
 
-		userRef.set(userData, { merge: true });
+		userRef.set(userDataG, { merge: true });
 	}
 
 	get isLoggedIn(): boolean {

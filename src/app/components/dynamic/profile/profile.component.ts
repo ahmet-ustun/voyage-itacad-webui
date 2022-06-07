@@ -1,6 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ToastrService } from 'ngx-toastr';
-import { map, Subscription } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { StoreService } from 'src/app/services/store/store.service';
 
@@ -9,31 +7,17 @@ import { StoreService } from 'src/app/services/store/store.service';
 	templateUrl: './profile.component.html',
 	styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent implements OnInit, OnDestroy {
+
+export class ProfileComponent implements OnInit {
 
 	userData: any;
-	userSpecies: any;
-	subscription!: Subscription;
 
 	constructor(
 		public authService: AuthService,
-		public storeService: StoreService,
-		private toastr: ToastrService
+		public storeService: StoreService
 	) {
-		this.userData = JSON.parse(localStorage.getItem('user')!);
+		this.userData = this.authService.userData;
 	}
 
-	ngOnInit(): void {
-		this.subscription = this.storeService.speciesRef.valueChanges({ idField: 'id' })
-			.pipe(
-				map(val => val.filter(el => el.recordedBy === this.userData.uid)))
-			.subscribe({
-				next: data => this.userSpecies = data,
-				error: error => this.toastr.error(error.message)
-			});
-	}
-
-	ngOnDestroy(): void {
-		this.subscription.unsubscribe();
-	}
+	ngOnInit(): void { }
 }
