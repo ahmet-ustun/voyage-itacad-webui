@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { ToastrService } from 'ngx-toastr';
 import { map } from 'rxjs';
 import { ISpecies } from 'src/app/interfaces/ispecies';
@@ -18,7 +19,8 @@ export class StoreService {
 	constructor(
 		private storeFirebase: AngularFirestore,
 		private authService: AuthService,
-		private toastr: ToastrService
+		private toastr: ToastrService,
+		private storage: AngularFireStorage
 	) {
 		this.speciesRef = this.storeFirebase.collection('species');
 		this.userData = this.authService.userData;
@@ -29,8 +31,6 @@ export class StoreService {
 				next: data => this.userSpecies = data,
 				error: error => this.toastr.error(error.message)
 			});
-
-			console.log(this.userSpecies);
 	}
 
 	getSpecies(speciesId: string) {
@@ -42,9 +42,19 @@ export class StoreService {
 	}
 
 	deleteSpecies(speciesId: string): any {
+		
 		if (confirm('Do you want to delete this species?')) {
 			return this.speciesRef.doc(speciesId).delete();
 		}
+	}
+
+	pushImgToStorage(fileUpload: any) {
+		
+		const filePath = `${this.userData.email}/${fileUpload.name}`;
+		
+		return this.storage.upload(filePath, fileUpload, {
+			contentType: 'image/jpeg',
+		});
 	}
 
 	get isExceeding(): boolean {

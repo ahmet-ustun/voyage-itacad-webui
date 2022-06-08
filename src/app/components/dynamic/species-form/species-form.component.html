@@ -1,0 +1,22 @@
+<!-- The button to open modal -->
+<label for="my-modal-3" class="btn btn-primary modal-button">
+    Add Species
+</label>
+<!-- Put this part before </body> tag -->
+<input type="checkbox" id="my-modal-3" class="modal-toggle" [(ngModel)]="isChecked" />
+<div class="modal">
+    <div class="modal-box relative">
+        <label for="my-modal-3" class="btn btn-sm btn-circle absolute right-2 top-2">
+            ✕
+        </label>
+        <form class="form-control mt-4 mr-4 gap-4" [formGroup]="speciesForm" (ngSubmit)="onSubmit()">
+            <input type="text" placeholder="Name" formControlName="name" class="input input-bordered" />
+            <textarea placeholder="Info" formControlName="info" class="textarea textarea-bordered h-56"></textarea>
+            <input type="file" formControlName="image" accept="image/jpeg" (change)="onFileChange($event)">
+            <div class=" flex gap-4">
+                <input class="btn btn-primary flex-grow" *ngIf="speciesForm.valid" type="submit" value="Add">
+                <input class="btn btn-error flex-grow" *ngIf="speciesForm.dirty" type="reset" value="Reset">
+            </div>
+        </form>
+    </div>
+</div>

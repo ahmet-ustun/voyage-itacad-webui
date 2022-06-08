@@ -2,25 +2,7 @@
     <div class="mockup-window border-none bg-base-300 shadow-md shadow-indigo-500/40 flex-grow">
         <section class="p-8 flex flex-row justify-between">
             <ng-template [ngIf]="authService.isLoggedIn && storeService.userSpecies && storeService.isExceeding" [ngIfElse]="placeholder">
-                <!-- The button to open modal -->
-                <label for="my-modal-3" class="btn btn-primary modal-button">
-                    Add Species
-                </label>
-                <!-- Put this part before </body> tag -->
-                <input type="checkbox" id="my-modal-3" class="modal-toggle" />
-                <div class="modal">
-                    <div class="modal-box relative">
-                        <label for="my-modal-3" class="btn btn-sm btn-circle absolute right-2 top-2">
-                            ✕
-                        </label>
-                        <div class="form-control gap-4">
-                            <input type="text" placeholder="Name" class="input input-bordered" />
-                            <textarea placeholder="Info" class="textarea textarea-bordered h-56"></textarea>
-                            <input type="file" accept="image/png, image/jpeg">
-                            <button class="btn btn-primary">Add</button>
-                        </div>
-                    </div>
-                </div>
+                <app-species-form></app-species-form>
             </ng-template>
             <ng-template #placeholder>
                 <div class="h-[50px]"></div>
@@ -45,7 +27,7 @@
                     <div class="card card-compact w-96 h-80 bg-base-100 shadow-xl"
                         *ngFor="let species of allSpecies | filter:searchKey">
                         <figure class="h-64 overflow-hidden">
-                            <img class="w-96" [src]="species.imageUrl" [alt]="species.name">
+                            <img class="w-full h-full object-cover" [src]="species.imageUrl" [alt]="species.name">
                         </figure>
                         <div class="card-body flex-row justify-between">
                             <h2 class="card-title">

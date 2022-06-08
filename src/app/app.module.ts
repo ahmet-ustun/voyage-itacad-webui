@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './modules/app-routing.module';
 import { AppComponent } from './app.component';
 import { MatCardModule } from '@angular/material/card';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { NavbarComponent } from './components/static/navbar/navbar.component';
 import { FooterComponent } from './components/static/footer/footer.component';
@@ -29,6 +30,7 @@ import { FormsModule } from '@angular/forms';
 import { FilterPipe } from './pipes/filter/filter.pipe';
 import { ExploreChildComponent } from './components/dynamic/explore-child/explore-child.component';
 import { SpeciesChildComponent } from './components/dynamic/species-child/species-child.component';
+import { SpeciesFormComponent } from './components/dynamic/species-form/species-form.component';
 
 @NgModule({
 	declarations: [
@@ -44,8 +46,9 @@ import { SpeciesChildComponent } from './components/dynamic/species-child/specie
 		NotFoundComponent,
 		GamingChildComponent,
 		FilterPipe,
-  ExploreChildComponent,
-  SpeciesChildComponent,
+		ExploreChildComponent,
+		SpeciesChildComponent,
+		SpeciesFormComponent,
 	],
 	imports: [
 		BrowserModule,
@@ -63,7 +66,8 @@ import { SpeciesChildComponent } from './components/dynamic/species-child/specie
 		AngularFireAuthModule,
 		AngularFireStorageModule,
 		MatCardModule,
-		FormsModule
+		FormsModule,
+		ReactiveFormsModule
 	],
 	providers: [
 		AuthService
