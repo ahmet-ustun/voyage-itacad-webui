@@ -1,13 +1,30 @@
-<div class="card card-compact w-96 bg-base-100 shadow-xl mb-4 xl:ml-4">
-    <figure>
-        <img src="https://api.lorem.space/image/shoes?w=400&h=225" alt="Shoes" />
-    </figure>
-    <div class="card-body">
-        <h2 class="card-title">
-            Test
-        </h2>
-        <p>
-            Test
-        </p>
+<ng-template [ngIf]="speciesData" [ngIfElse]="loading">
+    <div class="card card-compact w-96 bg-base-100 shadow-xl mb-4 xl:ml-4">
+        <figure class="h-64 overflow-hidden">
+            <img class="w-full h-full object-cover" [src]="speciesData.imageUrl" [alt]="speciesData.name" />
+        </figure>
+        <div class="card-body">
+            <h2 class="card-title">
+                {{speciesData.name}}
+            </h2>
+            <p>
+                {{speciesData.info}}
+            </p>
+        </div>
     </div>
-</div>
+</ng-template>
+<ng-template #loading>
+    <div class="card card-compact w-96 bg-base-100 shadow-xl mb-4 xl:ml-4">
+        <figure class="h-64 overflow-hidden bg-[#1F242D]"></figure>
+        <div class="card-body">
+            <h2 class="card-title">
+                <progress class="progress progress-primary w-full h-4" value="40" max="100"></progress>
+            </h2>
+            <p>
+                <progress class="progress progress-primary w-full" value="60" max="100"></progress>
+                <progress class="progress progress-primary w-full" value="40" max="100"></progress>
+                <progress class="progress progress-primary w-full" value="80" max="100"></progress>
+            </p>
+        </div>
+    </div>
+</ng-template>
