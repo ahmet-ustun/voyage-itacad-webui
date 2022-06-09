@@ -38,12 +38,12 @@ export class StoreService {
 		}
 	}
 
-	getGames(gamingId: string) {
-		return this.gamingRef.doc(gamingId);
-	}
-
 	getSpecies(speciesId: string) {
 		return this.speciesRef.doc(speciesId);
+	}
+	
+	getGames(gamingId: string) {
+		return this.gamingRef.doc(gamingId);
 	}
 
 	createSpecies(speciesInfo: ISpecies) {
