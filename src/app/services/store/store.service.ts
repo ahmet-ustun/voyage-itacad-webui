@@ -1,8 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-	AngularFirestore,
-	AngularFirestoreCollection,
-} from '@angular/fire/compat/firestore';
+import { AngularFirestore, AngularFirestoreCollection, } from '@angular/fire/compat/firestore';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { ToastrService } from 'ngx-toastr';
 import { map } from 'rxjs';
@@ -12,6 +9,7 @@ import { AuthService } from '../auth/auth.service';
 @Injectable({
 	providedIn: 'root',
 })
+
 export class StoreService {
 	speciesRef: AngularFirestoreCollection<any>;
 	gamingRef: AngularFirestoreCollection<any>;
