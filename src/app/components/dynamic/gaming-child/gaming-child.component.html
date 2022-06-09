@@ -1,8 +1,21 @@
-<div class="mb-4 shadow-xl card card-compact w-96 bg-base-100 xl:ml-4">
-  <figure>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/Lg-Ctg6k_Ao" title="YouTube Video Player"
-      frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen>
-    </iframe>
-  </figure>
-</div>
+<ng-template [ngIf]="gamingData" [ngIfElse]="loading">
+  <div class="mb-4 shadow-xl card card-compact w-96 bg-base-100 xl:ml-4">
+    <figure>
+      <iframe
+        width="560"
+        height="315"
+        [src]="gamingData.videoUrl | safe"
+        title="YouTube Video Player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      >
+      </iframe>
+    </figure>
+  </div>
+</ng-template>
+<ng-template #loading>
+  <div class="mb-4 shadow-xl card card-compact w-96 bg-base-100 xl:ml-4">
+    <figure></figure>
+  </div>
+</ng-template>
