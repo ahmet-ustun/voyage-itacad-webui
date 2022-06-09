@@ -1,5 +1,5 @@
 <ng-template [ngIf]="speciesData" [ngIfElse]="loading">
-    <div class="card card-compact w-96 bg-base-100 shadow-xl mb-4 xl:ml-4">
+    <div class="card card-compact w-96 bg-base-100 mb-4 xl:ml-4 shadow-md shadow-indigo-500/40">
         <figure class="h-64 overflow-hidden">
             <img class="w-full h-full object-cover" [src]="speciesData.imageUrl" [alt]="speciesData.name" />
         </figure>
@@ -14,7 +14,7 @@
     </div>
 </ng-template>
 <ng-template #loading>
-    <div class="card card-compact w-96 bg-base-100 shadow-xl mb-4 xl:ml-4">
+    <div class="card card-compact w-96 bg-base-100 mb-4 xl:ml-4 shadow-md shadow-indigo-500/40">
         <figure class="h-64 overflow-hidden bg-[#1F242D]"></figure>
         <div class="card-body">
             <h2 class="card-title">
