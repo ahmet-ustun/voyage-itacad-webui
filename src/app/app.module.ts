@@ -31,6 +31,7 @@ import { FilterPipe } from './pipes/filter/filter.pipe';
 import { ExploreChildComponent } from './components/dynamic/explore-child/explore-child.component';
 import { SpeciesChildComponent } from './components/dynamic/species-child/species-child.component';
 import { SpeciesFormComponent } from './components/dynamic/species-form/species-form.component';
+import { SafePipe } from './pipes/safe/safe.pipe';
 
 @NgModule({
 	declarations: [
@@ -49,6 +50,7 @@ import { SpeciesFormComponent } from './components/dynamic/species-form/species-
 		ExploreChildComponent,
 		SpeciesChildComponent,
 		SpeciesFormComponent,
+  SafePipe,
 	],
 	imports: [
 		BrowserModule,
