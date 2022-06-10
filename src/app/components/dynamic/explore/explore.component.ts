@@ -8,6 +8,8 @@ import { PlanetService } from 'src/app/services/planet/planet.service';
 })
 export class ExploreComponent implements OnInit {
 
+	searchKey: string = '';
+
 	constructor(
 		public planetService: PlanetService
 	) { }
