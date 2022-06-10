@@ -36,7 +36,7 @@
             </h2>
             <ng-template [ngIf]="storeService.userSpecies.length > 0" [ngIfElse]="noSpecies">
                 <div class="card card-side bg-base-100 shadow-xl mb-4 flex-col md:flex-row"
-                    *ngFor="let species of storeService.userSpecies">
+                    *ngFor="let species of storeService.userSpecies | orderBy:'name'">
                     <figure>
                         <img class="w-96 h-64" [src]="species.imageUrl" [alt]="species.name">
                     </figure>

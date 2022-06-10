@@ -73,7 +73,7 @@ export class PlanetService {
 		},
 		{
 			id: 10,
-			name: "Earth's Moon",
+			name: "Moon",
 			info: "The Moon is Earth's only natural satellite. At about one-quarter the diameter of Earth, it is the fifth largest satellite in the Solar System, the largest satellite in the Solar System relative to its major planet, and larger than any known dwarf planet.",
 			imageUrl: "https://solarsystem.nasa.gov/system/resources/list_images/2366_moon_th.jpg",
 			embedUrl: "https://solarsystem.nasa.gov/gltf_embed/2366"

@@ -19,7 +19,7 @@
 		<div class="p-8 flex flex-wrap gap-6 justify-center">
 			<ng-template [ngIf]="(planetService.database | filter:searchKey).length > 0" [ngIfElse]="noPlanets">
 				<div class="card card-compact w-96 h-96 bg-base-100 shadow-xl"
-					*ngFor="let planet of planetService.database | filter:searchKey">
+					*ngFor="let planet of planetService.database | orderBy:'name' | filter:searchKey">
 					<figure>
 						<img src="{{planet.imageUrl}}" alt="{{planet.name}}" width="100%" />
 					</figure>

@@ -25,7 +25,7 @@
             <ng-template [ngIf]="allSpecies" [ngIfElse]="loading">
                 <ng-template [ngIf]="(allSpecies | filter:searchKey).length > 0" [ngIfElse]="noSpecies">
                     <div class="card card-compact w-96 h-80 bg-base-100 shadow-xl"
-                        *ngFor="let species of allSpecies | filter:searchKey">
+                        *ngFor="let species of allSpecies | orderBy:'name' | filter:searchKey">
                         <figure class="h-64 overflow-hidden">
                             <img class="w-full h-full object-cover" [src]="species.imageUrl" [alt]="species.name">
                         </figure>
